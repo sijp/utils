@@ -14,8 +14,8 @@
       minimum: 0,
       maximum: 100
     }, options );
-  
-    return this.each(function(){
+
+    var sijpinnerHandler = function(){
     
       /*** START OF LOCAL VARIABLES DEFINITIONS ***/
       
@@ -29,11 +29,11 @@
        */
       var container = $("<div/>").addClass("sijpinner-container");
       var upButton = $("<span/>").addClass("add-on")
-                                 .append( $("<i/>").addClass("icon-chevron-up")
-                                                   .addClass("sijpinner-arrow"));
+                                 .addClass("sijpinner-arrow")
+                                 .append( $("<i/>").addClass("icon-chevron-up") );
       var downButton = $("<span/>").addClass("add-on")
-                                 .append( $("<i/>").addClass("icon-chevron-down")
-                                                   .addClass("sijpinner-arrow"));
+                                 .addClass("sijpinner-arrow")
+                                 .append( $("<i/>").addClass("icon-chevron-down") );
       var $this = $(this);
       
       /*** END OF LOCAL VARIABLES DEFINITIONS ***/
@@ -151,7 +151,10 @@
       });
       
       return container;
-    });
+    };
+
+  
+    return this.each(sijpinnerHandler);
   };
 
 }(jQuery));
