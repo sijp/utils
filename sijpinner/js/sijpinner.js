@@ -35,8 +35,6 @@
       var downButton = $("<span/>").addClass("add-on")
                                  .append( $("<i/>").addClass("icon-chevron-down")
                                                    .addClass("sijpinner-arrow"));
-      //var downButton = $("<span/>").addClass("add-on icon-chevron-down sijpinner-arrow");
-      //var buttonGroup = $("<div/>").addClass("sijpinner-horizontal-layout");
       var $this = $(this);
       
       /*** END OF LOCAL VARIABLES DEFINITIONS ***/
@@ -100,11 +98,8 @@
        // layouts the elements in the DOM
       $(this).parent().append(container);
       container.append( $(this) );
-      //$(this).addClass("sijpinner-field");
       _setValue(value);
       // adds the up and down buttons
-      //buttonGroup.append(upButton).append(downButton);
-      //container.append(buttonGroup);
       if (container.css("direction") === "rtl"){
         console.log("rtl");
         container.prepend(upButton).prepend(downButton);
