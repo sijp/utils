@@ -27,10 +27,16 @@
        * specifically adding support for up and down controllers and
        * overall container
        */
-      var container = $("<div/>").addClass("sijpinner-container");
-      var upButton = $("<a/>").addClass("icon-chevron-up sijpinner-arrow");
-      var downButton = $("<a/>").addClass("icon-chevron-down sijpinner-arrow");
-      var buttonGroup = $("<div/>").addClass("sijpinner-horizontal-layout");
+
+      var container = $("<div/>");
+      var upButton = $("<span/>").addClass("add-on")
+                                 .append( $("<i/>").addClass("icon-chevron-up")
+                                                   .addClass("sijpinner-arrow"));
+      var downButton = $("<span/>").addClass("add-on")
+                                 .append( $("<i/>").addClass("icon-chevron-down")
+                                                   .addClass("sijpinner-arrow"));
+      //var downButton = $("<span/>").addClass("add-on icon-chevron-down sijpinner-arrow");
+      //var buttonGroup = $("<div/>").addClass("sijpinner-horizontal-layout");
       var $this = $(this);
       
       /*** END OF LOCAL VARIABLES DEFINITIONS ***/
@@ -94,11 +100,21 @@
        // layouts the elements in the DOM
       $(this).parent().append(container);
       container.append( $(this) );
-      $(this).addClass("sijpinner-field");
-      $(this).val(value);
+      //$(this).addClass("sijpinner-field");
+      _setValue(value);
       // adds the up and down buttons
-      buttonGroup.append(upButton).append(downButton);
-      container.append(buttonGroup);
+      //buttonGroup.append(upButton).append(downButton);
+      //container.append(buttonGroup);
+      if (container.css("direction") === "rtl"){
+        console.log("rtl");
+        container.prepend(upButton).prepend(downButton);
+        container.addClass("input-append");
+      }
+      else{
+        console.log("ltr");
+        container.append(upButton).append(downButton);
+        container.addClass("input-append");
+      }
 
       //assigns the callbacks for the up/down buttons
       upButton.click(function(ev){
