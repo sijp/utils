@@ -27,8 +27,7 @@
        * specifically adding support for up and down controllers and
        * overall container
        */
-
-      var container = $("<div/>");
+      var container = $("<div/>").addClass("sijpinner-container");
       var upButton = $("<span/>").addClass("add-on")
                                  .append( $("<i/>").addClass("icon-chevron-up")
                                                    .addClass("sijpinner-arrow"));
@@ -57,7 +56,6 @@
        * if it passed, it will be returned
        * otherwise a better value will be returned
        */
-      
       function _preprocess(val){
         if (val > settings.maximum){
           return settings.maximum;
@@ -72,7 +70,6 @@
        * sets the value of this sijpinner
        * and updates the input field
        */
-      
       function _setValue(val){
         value = _preprocess(val);
         $this.val(value);
@@ -83,7 +80,6 @@
        * returns the value of the input field
        * as an integer.
        */
-      
       function _getInputValue(){
         try{
           return parseInt($this.val());
@@ -96,17 +92,15 @@
       /*** END OF LOCAL FUNCTIONS DEFINITIONS ***/
       
        // layouts the elements in the DOM
-      $(this).parent().append(container);
+      $(this).replaceWith( container );
       container.append( $(this) );
       _setValue(value);
       // adds the up and down buttons
       if (container.css("direction") === "rtl"){
-        console.log("rtl");
         container.prepend(upButton).prepend(downButton);
         container.addClass("input-append");
       }
       else{
-        console.log("ltr");
         container.append(upButton).append(downButton);
         container.addClass("input-append");
       }
